@@ -44,17 +44,6 @@
     <!-- ===============================================-->
     <main class="main" id="top">
       <div class="container" data-layout="container">
-          <div class="d-flex align-items-center">
-            <div class="toggle-icon-wrapper">
-
-              <button class="btn navbar-toggler-humburger-icon navbar-vertical-toggle" data-bs-toggle="tooltip" data-bs-placement="left" title="" data-bs-original-title="Toggle Navigation" aria-label="Toggle Navigation"><span class="navbar-toggle-icon"><span class="toggle-line"></span></span></button>
-
-            </div><a class="navbar-brand" href="index.html">
-              <div class="d-flex align-items-center py-3"><img class="me-2" src="static/assets/img/icons/spot-illustrations/falcon.svg" alt="" width="40"><span class="font-sans-serif">falcon</span>
-              </div>
-            </a>
-          </div>
-          
         </nav>
         <div class="content">
           <nav class="navbar navbar-light navbar-glass navbar-top navbar-expand">
@@ -110,9 +99,14 @@
               </li>
             </ul>
           </nav>
-          
-          <!-- here body block-->
-          
+          <div class="alert alert-success border-2 d-flex align-items-center" role="alert">
+            <div class="bg-success me-3 icon-item"><span class="fas fa-check-circle text-white fs-3"></span></div>
+            <p class="mb-0 flex-1">You are now logged in !</p>
+            <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+          <div class="card mb-3">
+        {% block body %}{% endblock %}
+        </div>
           
           
           <footer class="footer">
