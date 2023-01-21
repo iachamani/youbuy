@@ -1,0 +1,37 @@
+{% extends "account.html" %}
+{% block body %}
+{% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for  message in messages %} 
+          <div class="alert alert-danger border-2 d-flex align-items-center" role="alert">
+            <div class="bg-danger me-3 icon-item"><span class="fas fa-times-circle text-white fs-3"></span></div>
+            <p class="mb-0 flex-1">{{message}}</p>
+            <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+            {% endfor %}
+        {% endif %}
+{% endwith %}
+<div>
+<form action="/upload" method="POST" enctype="multipart/form-data">
+<div class="form-floating mb-3">
+    {{product.name(class="form-control is-valid",id="floatingInputValid",type="name")}}
+    <label for="floatingInputValid">{{product.name.label()}}</label>
+  </div>
+  <div class="form-floating mb-3">
+    {{product.price(class="form-control is-valid",id="floatingInputValid",type="price")}}
+    <label for="floatingInputValid">{{product.price.label()}}</label>
+  </div>
+  <!--DropZone-->
+  {{ product.item_photo.label }} {{ product.item_photo }}
+  <!---->
+  <div class="form-floating mb-3">
+    <label>{{product.description.label()}}</label>
+    {{product.description(class="form-control",id="floatingTextarea2",placeholder="Leave a comment here",style="height: 100px")}} 
+  </div>
+  <div class="mb-3">
+    {{ product.csrf_token }}
+    <button class="btn btn-primary d-block w-100 mt-3" type="submit" name="submit">Submit</button>
+  </div>
+</form>
+</div>
+{% endblock %}

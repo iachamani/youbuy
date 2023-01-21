@@ -1,0 +1,88 @@
+{% extends "account.html" %}
+{% block body %}
+<div class="row g-0">
+    <div class="col-lg-8 pe-lg-2">
+      <div class="card mb-3">
+        <div class="card-header">
+          <h5 class="mb-0">Profile Settings</h5>
+        </div>
+        <div class="card-body bg-light">
+          <form class="row g-3">
+            <div class="col-lg-6">
+              <label class="form-label" for="first-name">First Name</label>
+              <input class="form-control" id="first-name" type="text" value="Anthony">
+            </div>
+            <div class="col-lg-6">
+              <label class="form-label" for="last-name">Last Name</label>
+              <input class="form-control" id="last-name" type="text" value="Hopkins">
+            </div>
+            <div class="col-lg-6">
+              <label class="form-label" for="email1">Email</label>
+              <input class="form-control" id="email1" type="text" value="anthony@gmail.com">
+            </div>
+            <div class="col-lg-6">
+              <label class="form-label" for="email2">Phone</label>
+              <input class="form-control" id="email2" type="text" value="+44098098304">
+            </div>
+            
+            
+            <div class="col-12 d-flex justify-content-end">
+              <button class="btn btn-primary" type="submit">Update </button>
+            </div>
+          </form>
+        </div>
+      </div>
+      
+      
+    </div>
+    <div class="col-lg-4 ps-lg-2">
+      <div class="sticky-sidebar">
+        
+        <div class="card mb-3">
+          <div class="card-header">
+            <h5 class="mb-0">Billing Setting</h5>
+          </div>
+          
+          <div class="card-body bg-light border-top">
+            <h5>Payment</h5>
+            <p class="fs-0">You have not added any payment.</p><a class="btn btn-falcon-default btn-sm" href="#!">Add Payment </a>
+          </div>
+        </div>
+        <div class="card mb-3">
+          <div class="card-header">
+            <h5 class="mb-0">Change Password</h5>
+          </div>
+          <div class="card-body bg-light">
+            <form>
+              <div class="mb-3">
+                <label class="form-label" for="old-password">Old Password</label>
+                <input class="form-control" id="old-password" type="password">
+              </div>
+              <div class="mb-3">
+                <label class="form-label" for="new-password">New Password</label>
+                <input class="form-control" id="new-password" type="password">
+              </div>
+              <div class="mb-3">
+                <label class="form-label" for="confirm-password">Confirm Password</label>
+                <input class="form-control" id="confirm-password" type="password">
+              </div>
+              <button class="btn btn-primary d-block w-100" type="submit">Update Password </button>
+            </form>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <h5 class="mb-0">Danger Zone</h5>
+          </div>
+          <div class="card-body bg-light">
+            <h5 class="fs-0">Transfer Ownership</h5>
+            <p class="fs--1">Transfer this account to another user or to an organization where you have the ability to create repositories.</p><a class="btn btn-falcon-warning d-block" href="#!">Transfer</a>
+            <div class="border-dashed-bottom my-4"></div>
+            <h5 class="fs-0">Delete this account</h5>
+            <p class="fs--1">Once you delete a account, there is no going back. Please be certain.</p><a class="btn btn-falcon-danger d-block" href="#!">Deactivate Account</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -18,6 +18,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="static/assets/img/favicons/favicon-16x16.png">
     <link rel="shortcut icon" type="image/x-icon" href="static/assets/img/favicons/favicon.ico">
     <link rel="manifest" href="static/assets/img/favicons/manifest.json">
+    <link href="vendors/dropzone/dropzone.min.css" rel="stylesheet" />
     <meta name="msapplication-TileImage" content="static/assets/img/favicons/mstile-150x150.png">
     <meta name="theme-color" content="#ffffff">
     <script src="static/assets/js/config.js"></script>
@@ -50,7 +51,7 @@
 
             <button class="btn navbar-toggler-humburger-icon navbar-toggler me-1 me-sm-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarVerticalCollapse" aria-controls="navbarVerticalCollapse" aria-expanded="false" aria-label="Toggle Navigation"><span class="navbar-toggle-icon"><span class="toggle-line"></span></span></button>
             <a class="navbar-brand me-1 me-sm-3" href="index.html">
-              <div class="d-flex align-items-center"><img class="me-2" src="static/assets/img/icons/spot-illustrations/falcon.png" alt="" width="40"><span class="font-sans-serif">falcon</span>
+              <div class="d-flex align-items-center"><img class="me-2" src="static/assets/img/icons/spot-illustrations/falcon.png" alt="" width="40"><span class="font-sans-serif">Youbuy</span>
               </div>
             </a>
             <ul class="navbar-nav align-items-center d-none d-lg-block">
@@ -69,6 +70,12 @@
               </li>
             </ul>
             <ul class="navbar-nav navbar-nav-icons ms-auto flex-row align-items-center">
+              <!---->
+              <li class="nav-item">
+                <a class="nav-link px-0 notification-indicator notification-indicator-warning notification-indicator-fill fa-icon-wait" href="app/e-commerce/shopping-cart.html"><svg class="svg-inline--fa fa-shopping-cart fa-w-18" data-fa-transform="shrink-7" style="font-size: 33px;transform-origin: 0.5625em 0.5em;" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="shopping-cart" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg=""><g transform="translate(288 256)"><g transform="translate(0, 0)  scale(0.5625, 0.5625)  rotate(0 0 0)"><path fill="currentColor" d="M528.12 301.319l47.273-208C578.806 78.301 567.391 64 551.99 64H159.208l-9.166-44.81C147.758 8.021 137.93 0 126.529 0H24C10.745 0 0 10.745 0 24v16c0 13.255 10.745 24 24 24h69.883l70.248 343.435C147.325 417.1 136 435.222 136 456c0 30.928 25.072 56 56 56s56-25.072 56-56c0-15.674-6.447-29.835-16.824-40h209.647C430.447 426.165 424 440.326 424 456c0 30.928 25.072 56 56 56s56-25.072 56-56c0-22.172-12.888-41.332-31.579-50.405l5.517-24.276c3.413-15.018-8.002-29.319-23.403-29.319H218.117l-6.545-32h293.145c11.206 0 20.92-7.754 23.403-18.681z" transform="translate(-288 -256)"></path></g></g></svg><!-- <span class="fas fa-shopping-cart" data-fa-transform="shrink-7" style="font-size: 33px;"></span> Font Awesome fontawesome.com --><span class="notification-indicator-number">{{ cart_size }}</span></a>
+
+              </li>
+              <!---->
               <li class="nav-item">
                 <div class="theme-control-toggle fa-icon-wait px-2">
                   <input class="form-check-input ms-0 theme-control-toggle-input" id="themeControlToggle" type="checkbox" data-theme-control="theme" value="dark">
@@ -84,26 +91,34 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-end py-0" aria-labelledby="navbarDropdownUser">
                   <div class="bg-white dark__bg-1000 rounded-2 py-2">
-                    
 
                     
                     
-                    <a class="dropdown-item" href="pages/user/profile.html">Profile</a>
+                    <a class="dropdown-item" href="/profile">Profile</a>
                     
 
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="pages/user/settings.html">Settings</a>
-                    <a class="dropdown-item" href="pages/authentication/card/logout.html">Logout</a>
+                    <a class="dropdown-item" href="/store">Store</a>
+                    <a class="dropdown-item" href="/settings">Settings</a>
+                    <a class="dropdown-item" href="/logout">Logout</a>
                   </div>
                 </div>
               </li>
             </ul>
           </nav>
-          <div class="alert alert-success border-2 d-flex align-items-center" role="alert">
-            <div class="bg-success me-3 icon-item"><span class="fas fa-check-circle text-white fs-3"></span></div>
-            <p class="mb-0 flex-1">You are now logged in !</p>
-            <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>
+{% with messages = get_flashed_messages() %}
+        {% if messages %}
+                {% for  message in messages %} 
+                      {% if message == 'You are now logged in !' %}
+                <div class="alert alert-success border-2 d-flex align-items-center" role="alert">
+                  <div class="bg-success me-3 icon-item"><span class="fas fa-check-circle text-white fs-3"></span></div>
+                  <p class="mb-0 flex-1">{{message}}</p>
+                  <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                      {% endif %}
+                {% endfor %}
+        {% endif %}
+{% endwith %}
           <div class="card mb-3">
         {% block body %}{% endblock %}
         </div>
@@ -112,7 +127,7 @@
           <footer class="footer">
             <div class="row g-0 justify-content-between fs--1 mt-4 mb-3">
               <div class="col-12 col-sm-auto text-center">
-                <p class="mb-0 text-600">Thank you for creating with Falcon <span class="d-none d-sm-inline-block">| </span><br class="d-sm-none"> 2021 © <a href="https://mohamedfakir.live">Created by Mohamed Fakir</a></p>
+                <p class="mb-0 text-600">This a small Ecommerce project<span class="d-none d-sm-inline-block">| </span><br class="d-sm-none"> 2023 © <a href="https://mohamedfakir.live">Created by Mohamed Fakir</a></p>
               </div>
               <div class="col-12 col-sm-auto text-center">
                 <p class="mb-0 text-600">v1.0.0</p>
@@ -134,3 +149,6 @@
 </div>
 </body>
 </html>
+
+
+      

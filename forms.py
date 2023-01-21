@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField
+from wtforms import StringField, PasswordField, FileField
 from wtforms.validators import InputRequired, Length, EqualTo, ValidationError
 
 
@@ -27,5 +27,6 @@ class LoginForm(FlaskForm):
 
 class ProductForm(FlaskForm):
     name = StringField('Product Name',[InputRequired()])
-    item_photo = StringField('Product Picture',[InputRequired])
+    price = StringField('Product Price',[InputRequired()])
+    item_photo = FileField('Item Photo',[InputRequired()])
     description = StringField('Description',[InputRequired()])

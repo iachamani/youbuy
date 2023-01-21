@@ -7,6 +7,7 @@ class User(db.Model,UserMixin):
     username = db.Column(db.String(length=21),unique = True,nullable=False)
     email = db.Column(db.String(length=51),unique = True,nullable=False)
     password_hash = db.Column(db.String(length=128),nullable=False)
+    Isverified = db.Column(db.Boolean, default=False, nullable=False)
     @property
     def password(self):
         return self.password
@@ -19,11 +20,20 @@ class User(db.Model,UserMixin):
 
     def get_id(self):
         return self.user_id
-    #verified = db.Column(db.Boolean,nullable=False)
+    
 
 class Products(db.Model):
     id = db.Column(db.Integer(),primary_key = True)
-    name = db.Column(db.String(length=31),unique = True,nullable=False)
+    name = db.Column(db.String(length=31),nullable=False)
+    price = db.Column(db.Integer(),nullable=False)
     item_photo = db.Column(db.String(length=39),unique=True,nullable=False)
     description = db.Column(db.String(length=1001),nullable=False)
     owner = db.Column(db.Integer(),db.ForeignKey('user.user_id'))
+
+
+    #Retrieve the product from the database using the id
+    @classmethod
+    def get_product(cls,id):
+        return cls.query.filter_by(id=id).first()
+
+

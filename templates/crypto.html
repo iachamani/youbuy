@@ -1,0 +1,18 @@
+{% extends "account.html" %}
+{% block body %}
+<div class="row mx-0 pt-5 d-flex justify-content-center">
+    <div class="col-xs-4 col-sm-6 col-md-5 col-lg-4 col-xl-3">
+      <div class="card shadow-lg">
+        <div class="card-header card-header-divider text-center pt-4"> <img src="https://apirone.com/static/promo/bitcoin_logo_vector.svg" class="img-fluid" style="max-height: 42px;" width="205" alt=""><br>
+        <img src="/qr_code" style="max-width: 190px;" alt=""> </div>
+        <div class="card-body px-0">
+          <p class="text-center"><small><strong>{{address}}</strong></small></p>
+          <p class="text-muted text-center">Scan QR code and top-up your<br>
+            Monero balance for the require {{amount}}.<br>
+            Payment will be credited after 1 confirmation.<br>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
